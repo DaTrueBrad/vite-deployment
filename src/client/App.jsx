@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import axios from "axios";
 
@@ -16,6 +16,26 @@ function App() {
     })
   }
 
+  const handleDB = () => {
+    axios.post('/api/addContent')
+    .then((res) => {
+      console.log(res)
+    })
+    .catch((err) => {
+      console.error(err)
+    })
+  }
+
+  useEffect(() => {
+    axios.get('/api/getContent')
+    .then((res) => {
+      console.log('DB CONTENTS: ', res.data)
+    })
+    .catch((err) => {
+      console.error(err)
+    })
+  },[])
+
   return (
     <div className="App">
       <header>
@@ -26,6 +46,7 @@ function App() {
         the button...{" "}
       </h1>
       <button onClick={handleClick}>Click Here</button>
+      <button onClick={handleDB}>Add to DB</button>
     </div>
   );
 }
