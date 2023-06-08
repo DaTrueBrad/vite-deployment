@@ -14,7 +14,7 @@ app.post('/api/addContent', async (req, res) => {
   await Info.create({content: "Testing..."})
 })
 
-app.post('/api/getContent', async (req, res) => {
+app.get('/api/getContent', async (req, res) => {
   let info = await Info.findAll()
   res.status(200).send(info)
 })
