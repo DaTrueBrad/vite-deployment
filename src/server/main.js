@@ -4,6 +4,7 @@ const {Info} = require('./models')
 const db = require('./database')
 
 const app = express();
+app.use(express.json())
 
 app.get("/api/hello", (req, res) => {
   res.send("Your Mom (lol)");
