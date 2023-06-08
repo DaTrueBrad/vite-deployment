@@ -19,6 +19,8 @@ app.post('/api/getContent', async (req, res) => {
   res.status(200).send(info)
 })
 
+db.sync()
+
 ViteExpress.listen(app, 3000, () =>
   console.log("Server is listening on port 3000...")
 );
